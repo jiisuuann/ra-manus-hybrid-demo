@@ -2,7 +2,7 @@ import {readFile,readdir} from 'node:fs/promises';
 import {validate} from '../src/model.js';
 import {fileURLToPath} from 'node:url';
 export const outputFiles=['data/annual.json','index.html','logo.svg','src/app.js','src/model.js','src/style.css'];
-const sourceFiles=[...outputFiles,'.gitignore','README.md','package.json','scripts/audit.mjs','scripts/build.mjs','scripts/serve.mjs','tests/demo.test.mjs'];
+const sourceFiles=[...outputFiles,'.gitignore','README.md','package.json','scripts/audit.mjs','scripts/build.mjs','scripts/serve.mjs','tests/demo.test.mjs','.github/workflows/pages.yml'];
 async function walk(dir,prefix=''){
  const entries=await readdir(dir,{withFileTypes:true});let files=[];
  for(const e of entries){if(!prefix&&(e.name==='dist'||e.name==='.git'))continue;const name=prefix+e.name;if(e.isSymbolicLink())throw Error('Symlink forbidden: '+name);files.push(...(e.isDirectory()?await walk(new URL(e.name+'/',dir),name+'/'):[name]));}return files;

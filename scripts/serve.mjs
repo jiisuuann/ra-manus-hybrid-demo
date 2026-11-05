@@ -2,7 +2,7 @@ import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 const dist=process.argv.includes('--dist');
 const root=new URL(dist?'../dist/':'../',import.meta.url);
-const base='/campus-home-demo/';
+const base='/ra-manus-hybrid-demo/';
 const allowed=new Set(['index.html','logo.svg','src/app.js','src/model.js','src/style.css','data/annual.json']);
 const types={html:'text/html',svg:'image/svg+xml',js:'application/javascript',css:'text/css',json:'application/json'};
 const server=http.createServer(async(req,res)=>{

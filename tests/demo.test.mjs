@@ -7,6 +7,13 @@ import {auditSource,auditBuild} from '../scripts/audit.mjs';
 const data=JSON.parse(await readFile(new URL('../data/annual.json',import.meta.url)));
 test('synthetic annual release matches independently specified totals and medians',()=>{
  validate(data);assert.equal(data.cells.length,18);
+ // The release is a fixed fictional fixture, not a real-data import.
+ const towns=['Alder Bay','Birch Haven','Cedar Grove','Willow Harbor','Maple Ridge','Pine Valley'];
+ const schools=['Alder University','Birch College','Cedar University','Willow College','Maple University','Pine College'];
+ data.cells.forEach((cell,index)=>{
+  const town=Math.floor(index/3),year=index%3;
+  assert.deepEqual(cell,{city:'Demo '+towns[town],university:'Demo '+schools[town],region:['North','South','West'][Math.floor(town/2)],year:2023+year,count:300+town*80+year*30,medianPrice:250000+town*35000+year*15000});
+ });
  for(const [year,total] of [[2023,3000],[2024,3180],[2025,3360]])assert.equal(summary(selection(data,'all',year)).count,total);
  assert.deepEqual(summary(selection(data,'Demo Alder Bay',2025)),{count:360,medianPrice:280000});
  assert.equal(summary(selection(data,'all',2025)).medianPrice,null);
@@ -22,10 +29,20 @@ test('built website serves under a repository subpath and does not serve private
  const child=spawn(process.execPath,['scripts/serve.mjs','--dist'],{cwd:new URL('../',import.meta.url),env:{...process.env,PORT:'4174'},stdio:['ignore','pipe','pipe']});
  try{
   await new Promise((resolve,reject)=>{child.stdout.once('data',resolve);child.once('error',reject);child.once('exit',code=>reject(Error('Server exited '+code)))});
-  const base='http://127.0.0.1:4174/campus-home-demo/';
+  const base='http://127.0.0.1:4174/ra-manus-hybrid-demo/';
   for(const f of ['','#overview','#comparisons','logo.svg','src/app.js','src/model.js','src/style.css','data/annual.json'])assert.equal((await fetch(base+f)).status,200);
   for(const f of ['package.json','scripts/serve.mjs','../data/annual.json','data/sales.v1.json'])assert.equal((await fetch(base+f)).status,404);
   const html=await(await fetch(base)).text();assert.match(html,/src="\.\/src\/app.js"/);
+  // Resolve the actual HTML assets and module-relative data URL at the Pages path.
+  for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
+   const url=new URL(match[1],base);assert.ok(url.pathname.startsWith('/ra-manus-hybrid-demo/'));
+   assert.equal((await fetch(url)).status,200);
+  }
+  const moduleUrl=new URL('src/app.js',base);
+  const moduleText=await(await fetch(moduleUrl)).text();
+  assert.match(moduleText,/new URL\('\.\.\/data\/annual.json',import.meta.url\)/);
+  const release=await(await fetch(new URL('../data/annual.json',moduleUrl))).json();
+  assert.deepEqual(release,data);
  }finally{child.kill()}
 });
 test('navigation both ways, direct links, refresh, synchronized filters, annual updates, and reset',async()=>{
