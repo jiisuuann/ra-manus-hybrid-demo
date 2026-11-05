@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "provenance": "synthetic",
+  "publicationStatus": "demo-only",
+  "cells": [
+    {
+      "city": "Demo Alder Bay",
+      "university": "Demo Alder University",
+      "region": "North",
+      "year": 2023,
+      "count": 300,
+      "medianPrice": 250000
+    },
+    {
+      "city": "Demo Alder Bay",
+      "university": "Demo Alder University",
+      "region": "North",
+      "year": 2024,
+      "count": 330,
+      "medianPrice": 265000
+    },
+    {
+      "city": "Demo Alder Bay",
+      "university": "Demo Alder University",
+      "region": "North",
+      "year": 2025,
+      "count": 360,
+      "medianPrice": 280000
+    },
+    {
+      "city": "Demo Birch Haven",
+      "university": "Demo Birch College",
+      "region": "North",
+      "year": 2023,
+      "count": 380,
+      "medianPrice": 285000
+    },
+    {
+      "city": "Demo Birch Haven",
+      "university": "Demo Birch College",
+      "region": "North",
+      "year": 2024,
+      "count": 410,
+      "medianPrice": 300000
+    },
+    {
+      "city": "Demo Birch Haven",
+      "university": "Demo Birch College",
+      "region": "North",
+      "year": 2025,
+      "count": 440,
+      "medianPrice": 315000
+    },
+    {
+      "city": "Demo Cedar Grove",
+      "university": "Demo Cedar University",
+      "region": "South",
+      "year": 2023,
+      "count": 460,
+      "medianPrice": 320000
+    },
+    {
+      "city": "Demo Cedar Grove",
+      "university": "Demo Cedar University",
+      "region": "South",
+      "year": 2024,
+      "count": 490,
+      "medianPrice": 335000
+    },
+    {
+      "city": "Demo Cedar Grove",
+      "university": "Demo Cedar University",
+      "region": "South",
+      "year": 2025,
+      "count": 520,
+      "medianPrice": 350000
+    },
+    {
+      "city": "Demo Willow Harbor",
+      "university": "Demo Willow College",
+      "region": "South",
+      "year": 2023,
+      "count": 540,
+      "medianPrice": 355000
+    },
+    {
+      "city": "Demo Willow Harbor",
+      "university": "Demo Willow College",
+      "region": "South",
+      "year": 2024,
+      "count": 570,
+      "medianPrice": 370000
+    },
+    {
+      "city": "Demo Willow Harbor",
+      "university": "Demo Willow College",
+      "region": "South",
+      "year": 2025,
+      "count": 600,
+      "medianPrice": 385000
+    },
+    {
+      "city": "Demo Maple Ridge",
+      "university": "Demo Maple University",
+      "region": "West",
+      "year": 2023,
+      "count": 620,
+      "medianPrice": 390000
+    },
+    {
+      "city": "Demo Maple Ridge",
+      "university": "Demo Maple University",
+      "region": "West",
+      "year": 2024,
+      "count": 650,
+      "medianPrice": 405000
+    },
+    {
+      "city": "Demo Maple Ridge",
+      "university": "Demo Maple University",
+      "region": "West",
+      "year": 2025,
+      "count": 680,
+      "medianPrice": 420000
+    },
+    {
+      "city": "Demo Pine Valley",
+      "university": "Demo Pine College",
+      "region": "West",
+      "year": 2023,
+      "count": 700,
+      "medianPrice": 425000
+    },
+    {
+      "city": "Demo Pine Valley",
+      "university": "Demo Pine College",
+      "region": "West",
+      "year": 2024,
+      "count": 730,
+      "medianPrice": 440000
+    },
+    {
+      "city": "Demo Pine Valley",
+      "university": "Demo Pine College",
+      "region": "West",
+      "year": 2025,
+      "count": 760,
+      "medianPrice": 455000
+    }
+  ]
+}
